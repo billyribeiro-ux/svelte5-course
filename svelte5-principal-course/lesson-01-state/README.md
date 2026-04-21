@@ -36,9 +36,7 @@ Svelte's job is to delete that glue code. You write:
 
 ## A mental model that actually works
 
-If you have a Pine Script / ThinkScript background: think of `$state(0)` as declaring a _series_ whose history doesn't matter, only its current value. The template is a plot of it. When the series updates, the plot redraws. Svelte does the "redraw" part; you do the "update" part.
-
-If you do not have that background: think of `$state(0)` as an ordinary variable that the screen has tied a string to. Tug the variable — `count++` — and everything on the other end of the string moves.
+Think of `$state(0)` as an ordinary variable that the screen has tied a string to. Tug the variable — `count++` — and everything on the other end of the string moves. That is the entire picture. No listeners to wire up, no "please re-render now" calls. The screen is just watching.
 
 ## The rules (memorize these five)
 

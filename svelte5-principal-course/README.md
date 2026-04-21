@@ -1,6 +1,6 @@
 # Svelte 5 Principal Engineer Course
 
-A build-along course for engineers who already know how to ship — just not in this stack yet. Designed for Billy Ribeiro: Pine Script / ThinkScript / Python background, zero web-framework experience, high expectations.
+A build-along course for engineers who already know how to ship — just not in this stack yet. Designed for Billy Ribeiro: strong Python background, zero web-framework experience, high expectations.
 
 No toy examples. Every lesson has a real build. Every build compiles, runs, and passes strict TypeScript.
 
