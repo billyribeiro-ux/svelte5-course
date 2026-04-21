@@ -10,9 +10,9 @@ Built against the state of Svelte on **2026-04-21**:
 |---|---|
 | svelte | 5.55.4 |
 | @sveltejs/kit | 2.57.1 |
-| @sveltejs/vite-plugin-svelte | 6.0.3 |
+| @sveltejs/vite-plugin-svelte | 7.0.0 |
 | vite | 8.0.9 |
-| typescript | 7.0.0 |
+| typescript | 6.0.3 |
 | svelte-check | 4.4.6 |
 | pnpm | 10.33.0 |
 | node | 24.x |
