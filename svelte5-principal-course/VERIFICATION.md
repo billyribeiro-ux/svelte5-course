@@ -143,3 +143,36 @@ Legend:
 | Confirm every dep at latest as of 2026-04-21 | ✅ | svelte 5.55.4, @sveltejs/kit 2.57.1, vite 8.0.9, vite-plugin-svelte 7.0.0, svelte-check 4.4.6, typescript 6.0.3, @types/node 25.6.0, prettier 3.8.3, prettier-plugin-svelte 3.5.1, pnpm 10.33.0 — nothing needed bumping. |
 | `pnpm install` after swap | ✅ | Clean (+38 packages from adapter-vercel's deps). |
 | `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn. Each jumped from 294 → 295 files (adapter-vercel type defs now in graph). |
+
+## Batch 2D — Lesson 08: `class:` / `style:` (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Theme customizer). OKLCH accent sliders, mode/radius/scale knobs, live preview of 6 mock components, 4 preset chips, CSS export with clipboard copy. |
+| README | ✅ | 4-way class-syntax ranking, `style:` + custom properties theming pattern, common-mistakes table, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter | ✅ | Ships `class` wiring live (object form for dark mode, array form for button modifiers), stubs the three `style:` custom properties, preset click handler, clipboard copy, and `{#if}` around toast. |
+| Solution | ✅ | Theme customizer with object/array `class` forms, 3 custom-property `style:` injections, OKLCH `oklch(from var(--accent) …)` for derived tints, clipboard copy. |
+| Reference | ✅ | `ClassObjectForm`, `ClassArrayWithProps`, `StyleCustomProperty`, `StyleImportant`. |
+| Checks | ✅ | Both packages 287 files, 0 err / 0 warn. |
+| Decisions | Starter ships the `class` wiring live to keep scoped-CSS 0-warn; the `style:` custom-property work is the exercise. `class:` directive de-emphasised in favour of `class={…}` object/array forms. |
+
+## Batch 2E — Lesson 09: Scoped CSS + tokens (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Component gallery). **First multi-component lesson:** `Buttons`, `Cards`, `Forms` under `src/lib/`, composed by the gallery `+page.svelte`. |
+| README | ✅ | How scoped CSS compiles, three `:global()` forms, logical-properties table, token-driven theming, common-mistakes table, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter | ✅ | Ships the 3 sub-components fully done (they ARE the demo material), plus the gallery page with `:global()` prose block wired. Stubs: `class={{ gallery, dark }}` object form, `style:--density={densityValue}`, `D`-key shortcut. |
+| Solution | ✅ | Gallery with 3 sub-components, inline badges + alerts, `{@html}` prose with `.prose :global(…)` styling, dark-mode token overrides under `.gallery.dark`, `--density` multiplier. |
+| Reference | ✅ | `ScopedIdenticalClasses`, `GlobalBreakout`, `LogicalProperties`. |
+| Checks | ✅ | Both packages 290 files, 0 err / 0 warn. |
+| Decisions | Zero-prop sub-components (preserves `$props` for Lesson 11). Dark mode via token overrides, not a second stylesheet. `--density` as a numeric multiplier that propagates through `calc(var(--space-md) * var(--density))`. |
+
+## Batch 2F — Lesson 10: Transitions (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Image carousel). 5 slides, crossfade via `{#key}` + `in:fade`/`out:fade`, caption `in:fly`, dismissable `transition:slide` hint, autoplay Tween progress bar, keyboard controls, reduced-motion honoured. |
+| README | ✅ | `transition:` vs `in:`/`out:`, `{#key}` replay pattern, `prefersReducedMotion` gating, `$effect`-cleanup for `setInterval`, `Tween` from `svelte/motion`, common-mistakes, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter | ✅ | Ships the carousel shell — slides, markup, CSS, handlers. Stubs: derived `duration`, hint `transition:slide`, `<svelte:window>`-gate on Tween + `$effect` autoplay + cleanup, `{#key index}` around slide, `in:fade`/`out:fade`/`in:fly` directives, `onmouseenter`/`onmouseleave` pause. |
+| Solution | ✅ | Complete carousel: crossfade between slides with `{#key}`, caption re-flies on each change, `Tween` progress bar, autoplay with hover pause, keyboard left/right + Space, all durations gated on `prefersReducedMotion.current`. |
+| Reference | ✅ | `InOutSeparate`, `CrossfadeHelper` (tasks list with shared-element transitions), `AnimateFlipReorder` (keyed `{#each}` + `animate:flip`), `ReducedMotion`. |
+| Checks | ✅ | Both packages 287 files, 0 err / 0 warn. |
+| Decisions | `{#key}` + `in:`/`out:` preferred over `crossfade` helper for the carousel (simpler; crossfade is for shared-element pairs). `Tween` used for the progress bar — declarative fraction, no rAF plumbing. Hover-pause uses `onmouseenter`/`onmouseleave` on the stage `<div>` with `role="region"` + `aria-label` to pass a11y. |

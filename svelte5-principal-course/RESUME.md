@@ -1,6 +1,6 @@
 # Resume notes — Svelte 5 Principal Engineer course
 
-**Paused:** 2026-04-21, after Lesson 08 went green. **Part 1 DONE + Lessons 05–08 DONE in the new "one real project per lesson" format.** Next work starts at Lesson 09 — Component gallery for Scoped CSS + tokens.
+**Paused:** 2026-04-21, after Lesson 11 went green. **Parts 1 + 2 DONE, Part 3 started (L11 of 15).** Next work starts at Lesson 12 — Accordion for `$props.id()`.
 
 > Read this file top to bottom before doing anything. It captures what's built, what's verified, what the rules are, and what's next.
 
@@ -20,6 +20,9 @@
 | 06 | control flow blocks | one-real-project (Kanban board) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 | 07 | `bind:` directives | one-real-project (Settings editor) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 | 08 | `class:` / `style:` | one-real-project (Theme customizer) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
+| 09 | Scoped CSS + tokens | one-real-project (Component gallery — multi-component) | ✅ Green — 290 files / 0 err / 0 warn on starter + solution |
+| 10 | Transitions | one-real-project (Image carousel) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
+| 11 | `$props` | one-real-project (Chart library — 5 components + dashboard) | ✅ Green — 292 files / 0 err / 0 warn on starter + solution |
 
 Billy's explicit instruction that anchors this: **"Keep the lessons done as is and from now on do it the way i said."** Then later: **"as a matter of fact finish lesson 3 and 4 so we start fresh 5 onwards"**. So Lessons 01–04 stay in the legacy 4-challenge format. Lesson 05 onward uses the new one-real-project format (see §4).
 
@@ -51,10 +54,13 @@ Billy's explicit instruction that anchors this: **"Keep the lessons done as is a
 ├── lesson-05-markup/                 ✅ DONE — one-real-project format: Command Palette (⌘K / Ctrl+K, filter, ↑↓ nav, Enter to run, Esc to close)
 ├── lesson-06-control-flow/           ✅ DONE — one-real-project format: Kanban board (3 columns, keyed cards, ↑↓ reorder, ←→ move, priority, delete, clear-done, reset, `/` focus)
 ├── lesson-07-bind/                   ✅ DONE — one-real-project format: Settings editor (10 binding flavours, live JSON, reset, preview card with dimension bindings)
-└── lesson-08-class-style/            ✅ DONE — one-real-project format: Theme customizer (OKLCH sliders, mode/radius/scale, 4 presets, CSS export copy, live 6-component preview)
+├── lesson-08-class-style/            ✅ DONE — one-real-project format: Theme customizer (OKLCH sliders, mode/radius/scale, 4 presets, CSS export copy, live 6-component preview)
+├── lesson-09-scoped-css/             ✅ DONE — one-real-project format: Component gallery (multi-component: Buttons/Cards/Forms, `:global()` prose, dark mode via tokens, density multiplier)
+├── lesson-10-transitions/            ✅ DONE — one-real-project format: Image carousel (5 slides, crossfade, `in:fly` caption, dismissable hint, autoplay Tween bar, keyboard, prefersReducedMotion)
+└── lesson-11-props/                  ✅ DONE — one-real-project format: Chart library (Card + Sparkline + BarChart + Metric + Legend, typed Props interfaces, dashboard composition)
 ```
 
-Lesson directories 09 through 34 do **not** exist yet.
+Lesson directories 12 through 34 do **not** exist yet.
 
 ### Verified green (via `pnpm --filter ... check`)
 
@@ -76,6 +82,12 @@ Lesson directories 09 through 34 do **not** exist yet.
 | `@course/lesson-07-solution` | 0 err / 0 warn | 287 |
 | `@course/lesson-08-starter` | 0 err / 0 warn | 287 |
 | `@course/lesson-08-solution` | 0 err / 0 warn | 287 |
+| `@course/lesson-09-starter` | 0 err / 0 warn | 290 |
+| `@course/lesson-09-solution` | 0 err / 0 warn | 290 |
+| `@course/lesson-10-starter` | 0 err / 0 warn | 287 |
+| `@course/lesson-10-solution` | 0 err / 0 warn | 287 |
+| `@course/lesson-11-starter` | 0 err / 0 warn | 292 |
+| `@course/lesson-11-solution` | 0 err / 0 warn | 292 |
 
 _File counts re-measured 2026-04-21 after the adapter-auto → adapter-vercel swap (Batch 1E). Lesson 01 is at 297, Lesson 02 at 295, because Lesson 01 ships extra `$lib` stubs._
 
@@ -99,9 +111,11 @@ pnpm -r --parallel run check
 #7 [completed] Lesson 06 — Control flow blocks (Kanban board)
 #8 [completed] Lesson 07 — bind: directives (Settings editor)
 #9 [completed] Lesson 08 — class:/style: (Theme customizer)
+#10 [completed] Lesson 09 — Scoped CSS + tokens (Component gallery, multi-component)
+#11 [completed] Lesson 10 — Transitions (Image carousel)
 ```
 
-Next task to create: `Lesson 08 — class: / style: (Theme customizer)`.
+Next task to create: `Lesson 11 — $props (Chart library)`. **Start of Part 3 — Components and composition.**
 
 ---
 

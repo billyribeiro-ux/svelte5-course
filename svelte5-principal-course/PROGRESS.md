@@ -13,11 +13,11 @@ Check each box when the build is done AND the self-check questions are answered.
 - [x] Lesson 06 — Control flow blocks
 - [x] Lesson 07 — `bind:` directives
 - [x] Lesson 08 — `class` & `style`
-- [ ] Lesson 09 — Scoped CSS + tokens
-- [ ] Lesson 10 — Transitions
+- [x] Lesson 09 — Scoped CSS + tokens
+- [x] Lesson 10 — Transitions
 
 ## Part 3 — Components and composition
-- [ ] Lesson 11 — `$props`
+- [x] Lesson 11 — `$props`
 - [ ] Lesson 12 — `$props.id()`
 - [ ] Lesson 13 — `$bindable`
 - [ ] Lesson 14 — Snippets
