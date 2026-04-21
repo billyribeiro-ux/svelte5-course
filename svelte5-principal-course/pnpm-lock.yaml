@@ -511,6 +511,68 @@ importers:
         specifier: ^8.0.9
         version: 8.0.9(@types/node@25.6.0)
 
+  lesson-09-scoped-css/solution:
+    dependencies:
+      '@course/styles':
+        specifier: workspace:*
+        version: link:../../packages/styles
+    devDependencies:
+      '@sveltejs/adapter-vercel':
+        specifier: ^6.3.3
+        version: 6.3.3(@sveltejs/kit@2.57.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0)))(svelte@5.55.4)(typescript@6.0.3)(vite@8.0.9(@types/node@25.6.0)))
+      '@sveltejs/kit':
+        specifier: ^2.57.1
+        version: 2.57.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0)))(svelte@5.55.4)(typescript@6.0.3)(vite@8.0.9(@types/node@25.6.0))
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^7.0.0
+        version: 7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0))
+      '@types/node':
+        specifier: ^25.6.0
+        version: 25.6.0
+      svelte:
+        specifier: ^5.55.4
+        version: 5.55.4
+      svelte-check:
+        specifier: ^4.4.6
+        version: 4.4.6(picomatch@4.0.4)(svelte@5.55.4)(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.9
+        version: 8.0.9(@types/node@25.6.0)
+
+  lesson-09-scoped-css/starter:
+    dependencies:
+      '@course/styles':
+        specifier: workspace:*
+        version: link:../../packages/styles
+    devDependencies:
+      '@sveltejs/adapter-vercel':
+        specifier: ^6.3.3
+        version: 6.3.3(@sveltejs/kit@2.57.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0)))(svelte@5.55.4)(typescript@6.0.3)(vite@8.0.9(@types/node@25.6.0)))
+      '@sveltejs/kit':
+        specifier: ^2.57.1
+        version: 2.57.1(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0)))(svelte@5.55.4)(typescript@6.0.3)(vite@8.0.9(@types/node@25.6.0))
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^7.0.0
+        version: 7.0.0(svelte@5.55.4)(vite@8.0.9(@types/node@25.6.0))
+      '@types/node':
+        specifier: ^25.6.0
+        version: 25.6.0
+      svelte:
+        specifier: ^5.55.4
+        version: 5.55.4
+      svelte-check:
+        specifier: ^4.4.6
+        version: 4.4.6(picomatch@4.0.4)(svelte@5.55.4)(typescript@6.0.3)
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.9
+        version: 8.0.9(@types/node@25.6.0)
+
   packages/styles: {}
 
 packages:
