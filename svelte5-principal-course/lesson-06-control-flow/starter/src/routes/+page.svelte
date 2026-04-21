@@ -179,14 +179,16 @@
 			</header>
 
 			<ul class="cards">
-				<!-- Lesson 06 build: iterate col.cards with a keyed each block,
-				     and render cardRow(card, colIdx, cardIdx, col) for each.
-				     Provide a {:else} branch with <li class="empty">No cards yet.</li>. -->
+				<!-- Lesson 06 build: replace the <li> placeholder below with
+				     {@render cardRow(card, colIdx, cardIdx, col)} once you've
+				     declared the cardRow snippet above. The {:else} branch is
+				     already wired — verify it shows when a column is empty. -->
 				{#each col.cards as card, cardIdx (card.id)}
 					<li class="card">
-						<!-- Temporary placeholder until you wire the snippet up. -->
 						<span class="title">{card.title}</span>
 					</li>
+				{:else}
+					<li class="empty">No cards yet.</li>
 				{/each}
 			</ul>
 

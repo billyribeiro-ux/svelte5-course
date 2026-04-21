@@ -94,6 +94,26 @@ Legend:
 - **`$inspect` kept live in the solution.** Dev-only by design. Watches `{ isOpen, query, activeIndex, matches }`. Strips in production.
 - **Part 1 rune reinforcement ratio (solution):** 5× `$state`, 2× `$derived`, 1× `$effect`, 1× `$inspect` — every rune from Lessons 01–04 used at least once in the project, per the compounding-lessons rule.
 
+## Batch 2B — Lesson 06: Control flow blocks (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Kanban board). 3 columns, keyed cards, ↑↓ reorder, ←→ move between columns, priority chip, delete, clear-done, reset, `/` focus shortcut. |
+| README written | ✅ | Project-first: 7-rule mental model, move-vs-reorder explainer, common-mistakes table, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter scaffolded | ✅ | Full shell: seed data, handlers, CSS, `<svelte:window>`, the outer columns each, the inner cards each with `{:else}`, the add-card form. Stubs: the `cardRow` snippet declaration + render, and the `{#if}` around "Clear done". |
+| Solution built | ✅ | Complete Kanban. Uses `{#each}` keyed × 2 (columns + cards), `{:else}` empty state, `{#if}` for Clear done, `{#snippet cardRow}` + `{@render}`, `{@const}` inside snippet for the accent colour, `bind:value` on input and priority select. |
+| Reference files | ✅ | `KeyedVsUnkeyedEach`, `EachElse`, `SnippetRecursion`, `KeyBlockForceRemount`. Plus reference README index. |
+| Autofixer on all .svelte | ✅ | 0 issues on 6 of 6 files inside starter+solution+3 references. `KeyedVsUnkeyedEach.svelte` deliberately triggers the "Each block should have a key" warning — that's the demonstration. Documented in the file's comment. |
+| `pnpm install` | ✅ | Workspace now 14 projects (added lesson-06 starter + solution). |
+| `pnpm --filter @course/lesson-06-starter check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm --filter @course/lesson-06-solution check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm -r --parallel run check` | ✅ | All 12 packages green after Lesson 06 added. |
+
+### Decisions captured this batch
+- **Starter ships `{:else}` wired.** Without a live `<li class="empty">` in the template, svelte-check flags the `.empty` CSS selector as unused. Trade-off: loses `{:else}` as an explicit exercise. Gained: 0-warn clean. The student's substantive work is the snippet declaration + render and the `{#if}` gate on the Clear-done button.
+- **`cardRow` snippet kept local, not extracted to a component.** Lesson 14 covers snippets-as-props. Lesson 06 teaches the local-reuse shape.
+- **`{#key}` not used in the main project.** A Kanban doesn't have a genuine key-remount use case. Covered in `reference/KeyBlockForceRemount.svelte` instead, where the "reset form without touching the bound value" pattern is real.
+- **No `$effect` in the Kanban.** Not every lesson needs every rune — forcing an effect here would be contrived. `$state` × 2, `$derived` × 2, `$inspect` × 1 from Part 1; `bind:value` × 4, `<svelte:window>` × 1, `onsubmit`/`onclick` × many from Lesson 05. Covers 4 of 5 Part 1/05 runes/features naturally.
+
 ## Batch 1E — Adapter + pinning sweep (2026-04-21)
 | Step | Status | Notes |
 |---|---|---|

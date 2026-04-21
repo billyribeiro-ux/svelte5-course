@@ -1,6 +1,6 @@
 # Resume notes — Svelte 5 Principal Engineer course
 
-**Paused:** 2026-04-21, after Lesson 05 went green. **Part 1 DONE + Lesson 05 DONE (first lesson in the new "one real project per lesson" format).** Next work starts at Lesson 06 — Kanban board for control-flow blocks.
+**Paused:** 2026-04-21, after Lesson 06 went green. **Part 1 DONE + Lessons 05–06 DONE in the new "one real project per lesson" format.** Next work starts at Lesson 07 — Settings editor for `bind:` directives.
 
 > Read this file top to bottom before doing anything. It captures what's built, what's verified, what the rules are, and what's next.
 
@@ -17,6 +17,7 @@
 | 03 | `$effect` | 4-challenge (legacy) | ✅ Green — 294 files / 0 err / 0 warn on starter + solution |
 | 04 | `$inspect` / `.trace` | 4-challenge (legacy) | ✅ Green — 294 files / 0 err / 0 warn on starter + solution |
 | 05 | markup / attributes / events | one-real-project (Command Palette) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
+| 06 | control flow blocks | one-real-project (Kanban board) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 
 Billy's explicit instruction that anchors this: **"Keep the lessons done as is and from now on do it the way i said."** Then later: **"as a matter of fact finish lesson 3 and 4 so we start fresh 5 onwards"**. So Lessons 01–04 stay in the legacy 4-challenge format. Lesson 05 onward uses the new one-real-project format (see §4).
 
@@ -45,10 +46,11 @@ Billy's explicit instruction that anchors this: **"Keep the lessons done as is a
 ├── lesson-02-derived/                ✅ DONE
 ├── lesson-03-effect/                 ✅ DONE — Pomodoro-adjacent 4-challenge format (canvas / timer / autoscroll / persist)
 ├── lesson-04-inspect/                ✅ DONE — 4-challenge format (basic / filtered / trace / debug)
-└── lesson-05-markup/                 ✅ DONE — one-real-project format: Command Palette (⌘K / Ctrl+K, filter, ↑↓ nav, Enter to run, Esc to close)
+├── lesson-05-markup/                 ✅ DONE — one-real-project format: Command Palette (⌘K / Ctrl+K, filter, ↑↓ nav, Enter to run, Esc to close)
+└── lesson-06-control-flow/           ✅ DONE — one-real-project format: Kanban board (3 columns, keyed cards, ↑↓ reorder, ←→ move, priority, delete, clear-done, reset, `/` focus)
 ```
 
-Lesson directories 06 through 34 do **not** exist yet.
+Lesson directories 07 through 34 do **not** exist yet.
 
 ### Verified green (via `pnpm --filter ... check`)
 
@@ -64,6 +66,8 @@ Lesson directories 06 through 34 do **not** exist yet.
 | `@course/lesson-04-solution` | 0 err / 0 warn | 295 |
 | `@course/lesson-05-starter` | 0 err / 0 warn | 287 |
 | `@course/lesson-05-solution` | 0 err / 0 warn | 287 |
+| `@course/lesson-06-starter` | 0 err / 0 warn | 287 |
+| `@course/lesson-06-solution` | 0 err / 0 warn | 287 |
 
 _File counts re-measured 2026-04-21 after the adapter-auto → adapter-vercel swap (Batch 1E). Lesson 01 is at 297, Lesson 02 at 295, because Lesson 01 ships extra `$lib` stubs._
 
@@ -84,9 +88,10 @@ pnpm -r --parallel run check
 #4 [completed] Lesson 03 — $effect
 #5 [completed] Lesson 04 — $inspect
 #6 [completed] Lesson 05 — Markup/attributes/events (Command Palette)
+#7 [completed] Lesson 06 — Control flow blocks (Kanban board)
 ```
 
-Next task to create: `Lesson 06 — Control flow blocks (Kanban board project)`.
+Next task to create: `Lesson 07 — bind: directives (Settings editor)`.
 
 ---
 
@@ -242,11 +247,11 @@ One cohesive project per lesson. README order:
 ## 7. Exact first actions on resume
 
 ```text
-a. Run `pnpm install` and `pnpm -r --parallel run check` — confirm all 10 packages (Part 1 + L05) still green.
-b. Create task: "Lesson 06 — Control flow blocks (Kanban board)".
-c. Fetch docs via MCP: {#if}, {#each} (keyed, else), {#key}, {#snippet} / {@render}.
-d. Write the Lesson 06 README in the project-first format (§4).
-e. Proceed through the 17-step workflow in §5. Reinforce: $state for board data, $derived for per-column counts and filtered views, $effect if persistence, $inspect in dev; bind:value / bind:this / <svelte:window> / onclick events from Lesson 05.
+a. Run `pnpm install` and `pnpm -r --parallel run check` — confirm all 12 packages (Part 1 + L05 + L06) still green.
+b. Create task: "Lesson 07 — bind: directives (Settings editor)".
+c. Fetch docs via MCP: bind: (all form controls — text, select, group, files, indeterminate), bind:this, function bindings, bind:_property_ for components (preview for $bindable), and contenteditable bindings.
+d. Write the Lesson 07 README in the project-first format (§4).
+e. Proceed through the 17-step workflow in §5. Reinforce: $state for the settings object, $derived for the serialized JSON preview, $effect for localStorage persistence if fits, $inspect in dev; from Lesson 05 onclick + preventDefault; from Lesson 06 {#each} of setting sections with keys, {#if} gates for conditional sections.
 ```
 
 When in doubt whether a project is "real enough," ask: **would someone actually build this feature at a company, or is it a demo from the docs?** If the second, pick a different project.
