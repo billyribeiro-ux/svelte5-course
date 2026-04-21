@@ -1,0 +1,14 @@
+/*
+ * One import to get everything.
+ *
+ * The @layer line fixes the cascade order globally: tokens -> reset -> base
+ * -> components -> utilities. Anything written outside of @layer is treated
+ * as "above utilities" (highest precedence of the unlayered stuff) — so you
+ * generally want your own styles inside a @layer too.
+ */
+
+@layer tokens, reset, base, components, utilities;
+
+@import './tokens.css';
+@import './reset.css';
+@import './base.css';

@@ -1,0 +1,129 @@
+/*
+ * Design tokens — shared across every lesson.
+ *
+ * Three principles:
+ *   1. OKLCH for every color. Perceptually uniform. If you bump `l` by 5%, it
+ *      looks 5% lighter. RGB/HSL do not give you that.
+ *   2. Logical properties only (inline/block, not left/right, width/height).
+ *      Flips automatically for RTL users with no extra work.
+ *   3. `@layer` controls the cascade. Low-specificity utilities can still
+ *      override component styles without `!important`.
+ */
+
+@layer tokens {
+	:root {
+		/* ---------- color: raw palette (don't use directly in components) ---------- */
+		--palette-neutral-0: oklch(99% 0 0);
+		--palette-neutral-50: oklch(97% 0.004 260);
+		--palette-neutral-100: oklch(94% 0.008 260);
+		--palette-neutral-200: oklch(88% 0.012 260);
+		--palette-neutral-300: oklch(78% 0.016 260);
+		--palette-neutral-500: oklch(58% 0.02 260);
+		--palette-neutral-700: oklch(38% 0.018 260);
+		--palette-neutral-900: oklch(18% 0.014 260);
+		--palette-neutral-1000: oklch(10% 0.008 260);
+
+		--palette-accent-400: oklch(68% 0.18 24);
+		--palette-accent-500: oklch(60% 0.2 24);
+		--palette-accent-600: oklch(52% 0.2 24);
+
+		--palette-success-500: oklch(62% 0.15 150);
+		--palette-warning-500: oklch(75% 0.15 80);
+		--palette-danger-500: oklch(58% 0.22 28);
+
+		/* ---------- color: semantic (use these in components) ---------- */
+		--color-surface: var(--palette-neutral-0);
+		--color-surface-raised: var(--palette-neutral-50);
+		--color-surface-sunken: var(--palette-neutral-100);
+		--color-border: var(--palette-neutral-200);
+		--color-border-strong: var(--palette-neutral-300);
+
+		--color-text: var(--palette-neutral-900);
+		--color-text-muted: var(--palette-neutral-700);
+		--color-text-subtle: var(--palette-neutral-500);
+		--color-text-inverse: var(--palette-neutral-0);
+
+		--color-accent: var(--palette-accent-500);
+		--color-accent-hover: var(--palette-accent-600);
+		--color-accent-text: var(--palette-neutral-0);
+
+		--color-success: var(--palette-success-500);
+		--color-warning: var(--palette-warning-500);
+		--color-danger: var(--palette-danger-500);
+
+		/* ---------- spacing (rem-based, 4px grid) ---------- */
+		--space-3xs: 0.125rem; /* 2px */
+		--space-2xs: 0.25rem; /* 4px */
+		--space-xs: 0.5rem; /* 8px */
+		--space-sm: 0.75rem; /* 12px */
+		--space-md: 1rem; /* 16px */
+		--space-lg: 1.5rem; /* 24px */
+		--space-xl: 2rem; /* 32px */
+		--space-2xl: 3rem; /* 48px */
+		--space-3xl: 4rem; /* 64px */
+
+		/* ---------- radius ---------- */
+		--radius-sm: 0.25rem;
+		--radius-md: 0.5rem;
+		--radius-lg: 0.75rem;
+		--radius-full: 9999px;
+
+		/* ---------- typography ---------- */
+		--font-sans:
+			system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+		--font-mono:
+			ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+			monospace;
+
+		--text-xs: 0.75rem;
+		--text-sm: 0.875rem;
+		--text-md: 1rem;
+		--text-lg: 1.125rem;
+		--text-xl: 1.25rem;
+		--text-2xl: 1.5rem;
+		--text-3xl: 1.875rem;
+		--text-4xl: 2.25rem;
+
+		--leading-tight: 1.2;
+		--leading-normal: 1.5;
+		--leading-loose: 1.7;
+
+		/* ---------- elevation ---------- */
+		--shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
+		--shadow-md: 0 4px 8px -2px oklch(0% 0 0 / 0.08);
+		--shadow-lg: 0 12px 24px -8px oklch(0% 0 0 / 0.12);
+
+		/* ---------- motion ---------- */
+		--ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+		--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+		--duration-fast: 120ms;
+		--duration-normal: 200ms;
+		--duration-slow: 320ms;
+
+		/* ---------- layout ---------- */
+		--container-sm: 40rem;
+		--container-md: 56rem;
+		--container-lg: 72rem;
+
+		color-scheme: light dark;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--color-surface: var(--palette-neutral-1000);
+			--color-surface-raised: var(--palette-neutral-900);
+			--color-surface-sunken: oklch(6% 0.006 260);
+			--color-border: var(--palette-neutral-700);
+			--color-border-strong: var(--palette-neutral-500);
+
+			--color-text: var(--palette-neutral-50);
+			--color-text-muted: var(--palette-neutral-200);
+			--color-text-subtle: var(--palette-neutral-300);
+			--color-text-inverse: var(--palette-neutral-1000);
+
+			--color-accent: var(--palette-accent-400);
+			--color-accent-hover: var(--palette-accent-500);
+			--color-accent-text: var(--palette-neutral-1000);
+		}
+	}
+}

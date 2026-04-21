@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+.pnpm-store
+.svelte-kit
+build
+dist
+.vercel
+.vite
+*.log
+.env
+.env.*
+!.env.example
