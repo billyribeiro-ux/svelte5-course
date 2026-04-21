@@ -74,6 +74,26 @@ Legend:
 
 **Part 1 (Runes Mastery) complete.** Lessons 01–04 all green. Next: Lesson 5 onward switches to the "one real project per lesson" format per Billy's direction.
 
+## Batch 2A — Lesson 05: Markup / attributes / events (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format shift | ✅ | First lesson in the new "one real project" format. README rewritten to match the project-first structure in RESUME.md §4. |
+| README written | ✅ | Project-first: "command palette" with feature list, 6-rule mental model, common mistakes, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter scaffolded | ✅ | Single-page SvelteKit app. `+layout.svelte` minimal, `+page.svelte` ships the dashboard + palette shell. Concept-specific parts stubbed with `// Lesson 05 build:` comments. |
+| Solution built | ✅ | Complete command palette: ⌘K/Ctrl+K toggle, Escape/backdrop close, auto-focus, substring filter, empty state, wrap-around ↑/↓ nav, Enter to run, last-action banner. Reinforces `$state` × 5, `$derived` × 2, `$effect` × 1, `$inspect` × 1. |
+| Reference files | ✅ | `HandlerCalledVsReferenced`, `SpreadAttributeOrder`, `BooleanAttributeFootgun`, `CrossPlatformShortcut`. Plus reference README index. |
+| Autofixer on all .svelte | ✅ | 0 issues on all 6 `.svelte` files (2 layouts, 2 pages, 4 references). Two suggestions on solution/+page.svelte accepted as teaching moments: `bind:this` is the feature (migrates to `{@attach}` in Lesson 25); `inputEl?.focus()` inside `$effect` is a legitimate DOM side-effect. |
+| `pnpm install` | ✅ | Workspace now 12 projects (was 11 after 1E). |
+| `pnpm --filter @course/lesson-05-starter check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm --filter @course/lesson-05-solution check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm -r --parallel run check` | ✅ | All 10 packages green after Lesson 05 added. |
+
+### Decisions captured this batch
+- **No `data-active` attribute.** Started with `data-active={i === activeIndex \|\| undefined}` for highlight styling, but swapped to `aria-selected={...}` alone after realising one attribute is enough and svelte-check flagged the duplicate styling selector as unused in the starter (where the literal `"false"` value prevented `[aria-selected='true']` from matching statically). The solution uses one source of truth: `aria-selected`.
+- **Starter ships `aria-selected={i === activeIndex}` live.** Trade-off: gives away the attribute-expression pattern but keeps the scoped-CSS warning count at 0. The substantive exercise remains in handlers, bindings, `$derived`, `$effect`, and `<svelte:window>`.
+- **`$inspect` kept live in the solution.** Dev-only by design. Watches `{ isOpen, query, activeIndex, matches }`. Strips in production.
+- **Part 1 rune reinforcement ratio (solution):** 5× `$state`, 2× `$derived`, 1× `$effect`, 1× `$inspect` — every rune from Lessons 01–04 used at least once in the project, per the compounding-lessons rule.
+
 ## Batch 1E — Adapter + pinning sweep (2026-04-21)
 | Step | Status | Notes |
 |---|---|---|
