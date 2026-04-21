@@ -4,6 +4,9 @@
   "private": true,
   "description": "Shared design tokens and base styles for every lesson",
   "type": "module",
+  "engines": {
+    "node": "24.14.1"
+  },
   "exports": {
     "./tokens.css": "./tokens.css",
     "./reset.css": "./reset.css",

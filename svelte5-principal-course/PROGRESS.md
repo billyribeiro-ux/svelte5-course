@@ -5,8 +5,8 @@ Check each box when the build is done AND the self-check questions are answered.
 ## Part 1 — Reactivity fundamentals
 - [x] Lesson 01 — `$state`
 - [x] Lesson 02 — `$derived`
-- [ ] Lesson 03 — `$effect`
-- [ ] Lesson 04 — `$inspect` & `$inspect.trace`
+- [x] Lesson 03 — `$effect`
+- [x] Lesson 04 — `$inspect` & `$inspect.trace`
 
 ## Part 2 — Template mastery
 - [ ] Lesson 05 — Markup, attributes, events

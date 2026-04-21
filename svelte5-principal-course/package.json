@@ -5,7 +5,7 @@
   "description": "Billy Ribeiro's Principal Engineer Svelte 5 course",
   "type": "module",
   "engines": {
-    "node": "24.x"
+    "node": "24.14.1"
   },
   "packageManager": "pnpm@10.33.0",
   "scripts": {

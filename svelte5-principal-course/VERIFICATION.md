@@ -49,3 +49,36 @@ Legend:
 
 ### User feedback captured this batch
 - Billy asked not to use PineScript/ThinkScript analogies. Removed two existing references (top-level README, Lesson 01 README) and removed the fresh one from Lesson 02. Saved to memory.
+
+## Batch 1C — Lesson 03: $effect
+| Step | Status | Notes |
+|---|---|---|
+| README written | ✅ | 9-rule mental model, 4 worked examples, common mistakes, PE lens, 4 build challenges, self-check questions |
+| Starter scaffolded | ✅ | +layout, +page, 4 route stubs: canvas, timer, autoscroll, persist |
+| Solution built | ✅ | Canvas rounded-rect redraw; timer with setInterval + teardown + pause; chat autoscroll with `$effect.pre` + `tick()`; localStorage theme persist with `untrack` mount-only read |
+| Reference files | ✅ | `EffectVsDerivedAntipattern`, `AsyncReadsNotTracked`, `ObjectIdentityTracking`, `EffectPreVsEffectTiming` |
+| Autofixer on all .svelte | ✅ | 0 issues; suggestions about setInterval-inside-$effect and `seconds += 1` in tick callback are legitimate patterns this lesson teaches |
+| `pnpm --filter @course/lesson-03-starter check` | ✅ | 294 files, 0 errors, 0 warnings |
+| `pnpm --filter @course/lesson-03-solution check` | ✅ | 294 files, 0 errors, 0 warnings |
+
+## Batch 1D — Lesson 04: $inspect
+| Step | Status | Notes |
+|---|---|---|
+| README written | ✅ | 5-rule mental model, 4 worked examples, common mistakes, PE lens, 4 build challenges, self-check questions |
+| Starter scaffolded | ✅ | +layout, +page, 4 route stubs: basic, filtered, trace, debug |
+| Solution built | ✅ | `$inspect(form)` deep watch; `.with((type, value) => ...)` threshold filter; `$inspect.trace` inside `$derived.by` and `$effect`; fixed reset-bug demo using `orders.length = 0` + push |
+| Reference files | ✅ | `InspectIsDeep`, `InspectWithType`, `InspectStripsInProd`, `InspectDoesNotFireOnSameValue` |
+| Autofixer on all .svelte | ✅ | 0 issues; one suggestion about function-calls-inside-$effect is a false positive (`console.log` + `$inspect.trace` do not mutate state) |
+| `pnpm --filter @course/lesson-04-starter check` | ✅ | 294 files, 0 errors, 0 warnings |
+| `pnpm --filter @course/lesson-04-solution check` | ✅ | 294 files, 0 errors, 0 warnings |
+
+**Part 1 (Runes Mastery) complete.** Lessons 01–04 all green. Next: Lesson 5 onward switches to the "one real project per lesson" format per Billy's direction.
+
+## Batch 1E — Adapter + pinning sweep (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Swap adapter-auto → adapter-vercel | ✅ | All 8 `svelte.config.js` + 8 `package.json` files. `@sveltejs/adapter-vercel@^6.3.3`. |
+| Pin Node engine across all package.jsons | ✅ | `"node": "24.14.1"` in 10 manifests (root, styles, 8 lesson packages). 24.15.0 does NOT exist — current lts/krypton is 24.14.1. |
+| Confirm every dep at latest as of 2026-04-21 | ✅ | svelte 5.55.4, @sveltejs/kit 2.57.1, vite 8.0.9, vite-plugin-svelte 7.0.0, svelte-check 4.4.6, typescript 6.0.3, @types/node 25.6.0, prettier 3.8.3, prettier-plugin-svelte 3.5.1, pnpm 10.33.0 — nothing needed bumping. |
+| `pnpm install` after swap | ✅ | Clean (+38 packages from adapter-vercel's deps). |
+| `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn. Each jumped from 294 → 295 files (adapter-vercel type defs now in graph). |
