@@ -1,6 +1,6 @@
 # Resume notes — Svelte 5 Principal Engineer course
 
-**Paused:** 2026-04-21, after Lesson 06 went green. **Part 1 DONE + Lessons 05–06 DONE in the new "one real project per lesson" format.** Next work starts at Lesson 07 — Settings editor for `bind:` directives.
+**Paused:** 2026-04-21, after Lesson 07 went green. **Part 1 DONE + Lessons 05–07 DONE in the new "one real project per lesson" format.** Next work starts at Lesson 08 — Theme customizer for `class:` / `style:`.
 
 > Read this file top to bottom before doing anything. It captures what's built, what's verified, what the rules are, and what's next.
 
@@ -18,6 +18,7 @@
 | 04 | `$inspect` / `.trace` | 4-challenge (legacy) | ✅ Green — 294 files / 0 err / 0 warn on starter + solution |
 | 05 | markup / attributes / events | one-real-project (Command Palette) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 | 06 | control flow blocks | one-real-project (Kanban board) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
+| 07 | `bind:` directives | one-real-project (Settings editor) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 
 Billy's explicit instruction that anchors this: **"Keep the lessons done as is and from now on do it the way i said."** Then later: **"as a matter of fact finish lesson 3 and 4 so we start fresh 5 onwards"**. So Lessons 01–04 stay in the legacy 4-challenge format. Lesson 05 onward uses the new one-real-project format (see §4).
 
@@ -47,10 +48,11 @@ Billy's explicit instruction that anchors this: **"Keep the lessons done as is a
 ├── lesson-03-effect/                 ✅ DONE — Pomodoro-adjacent 4-challenge format (canvas / timer / autoscroll / persist)
 ├── lesson-04-inspect/                ✅ DONE — 4-challenge format (basic / filtered / trace / debug)
 ├── lesson-05-markup/                 ✅ DONE — one-real-project format: Command Palette (⌘K / Ctrl+K, filter, ↑↓ nav, Enter to run, Esc to close)
-└── lesson-06-control-flow/           ✅ DONE — one-real-project format: Kanban board (3 columns, keyed cards, ↑↓ reorder, ←→ move, priority, delete, clear-done, reset, `/` focus)
+├── lesson-06-control-flow/           ✅ DONE — one-real-project format: Kanban board (3 columns, keyed cards, ↑↓ reorder, ←→ move, priority, delete, clear-done, reset, `/` focus)
+└── lesson-07-bind/                   ✅ DONE — one-real-project format: Settings editor (10 binding flavours, live JSON, reset, preview card with dimension bindings)
 ```
 
-Lesson directories 07 through 34 do **not** exist yet.
+Lesson directories 08 through 34 do **not** exist yet.
 
 ### Verified green (via `pnpm --filter ... check`)
 
@@ -68,6 +70,8 @@ Lesson directories 07 through 34 do **not** exist yet.
 | `@course/lesson-05-solution` | 0 err / 0 warn | 287 |
 | `@course/lesson-06-starter` | 0 err / 0 warn | 287 |
 | `@course/lesson-06-solution` | 0 err / 0 warn | 287 |
+| `@course/lesson-07-starter` | 0 err / 0 warn | 287 |
+| `@course/lesson-07-solution` | 0 err / 0 warn | 287 |
 
 _File counts re-measured 2026-04-21 after the adapter-auto → adapter-vercel swap (Batch 1E). Lesson 01 is at 297, Lesson 02 at 295, because Lesson 01 ships extra `$lib` stubs._
 
@@ -89,9 +93,10 @@ pnpm -r --parallel run check
 #5 [completed] Lesson 04 — $inspect
 #6 [completed] Lesson 05 — Markup/attributes/events (Command Palette)
 #7 [completed] Lesson 06 — Control flow blocks (Kanban board)
+#8 [completed] Lesson 07 — bind: directives (Settings editor)
 ```
 
-Next task to create: `Lesson 07 — bind: directives (Settings editor)`.
+Next task to create: `Lesson 08 — class: / style: (Theme customizer)`.
 
 ---
 

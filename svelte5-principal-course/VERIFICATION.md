@@ -114,6 +114,27 @@ Legend:
 - **`{#key}` not used in the main project.** A Kanban doesn't have a genuine key-remount use case. Covered in `reference/KeyBlockForceRemount.svelte` instead, where the "reset form without touching the bound value" pattern is real.
 - **No `$effect` in the Kanban.** Not every lesson needs every rune — forcing an effect here would be contrived. `$state` × 2, `$derived` × 2, `$inspect` × 1 from Part 1; `bind:value` × 4, `<svelte:window>` × 1, `onsubmit`/`onclick` × many from Lesson 05. Covers 4 of 5 Part 1/05 runes/features naturally.
 
+## Batch 2C — Lesson 07: `bind:` directives (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Settings editor). Live-binding preferences page — no save button, every control writes through to a `$state` settings shape, serialized JSON panel at the bottom. |
+| README written | ✅ | Project-first: lists all 10 binding flavours, 6-rule mental model, dedicated `bind:this`, indeterminate, and `bind:files` subsections, common-mistakes table, PE lens, acceptance criteria, 3 self-check questions. |
+| Starter scaffolded | ✅ | Ships the whole shell — settings defaults, handlers, CSS, `<svelte:window>`, preview card markup, the JSON `<pre>`. Stubs every `bind:` with `// Lesson 07 build:` comments explaining the exact getter/setter shape. |
+| Solution built | ✅ | 10 bindings live: `bind:value` × 5 (text, time × 2, range, select), `bind:checked` × 1, function binding on display name + function binding on "all channels" parent checkbox, `bind:group` × 2 (radios + checkbox array), `bind:indeterminate` driven by `$derived`, `bind:files`, `bind:this`, `bind:clientWidth`, `bind:clientHeight`. |
+| Reference files | ✅ | `FunctionBindingClamp`, `IndeterminateParent`, `DimensionBinding`, `FileInputBasics`. Plus reference README index. |
+| Autofixer on all .svelte | ✅ | 0 issues across all 6 `.svelte` files. |
+| `pnpm install` | ✅ | Workspace now 14 projects (added lesson-07 starter + solution). |
+| `pnpm --filter @course/lesson-07-starter check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm --filter @course/lesson-07-solution check` | ✅ | 287 files, 0 errors, 0 warnings. |
+| `pnpm -r --parallel run check` | ✅ | All 14 packages green after Lesson 07 added. |
+
+### Decisions captured this batch
+- **Live bindings, no save button.** Auto-apply is the correct pattern for preferences. Save buttons create dirty-state anxiety and are a net negative for power users. Documented in the PE lens.
+- **`indeterminate` is a plain attribute, not a bind.** It's derived from the children array (`$derived`). Writing `bind:indeterminate` to a $state boolean is a footgun because nothing derives it. The parent `checked` uses a function binding to write all-or-nothing.
+- **Function binding for "shouty mode" display name.** Getter returns the raw name; setter conditionally upper-cases based on `settings.profile.shouty`. Demonstrates the intended use case — normalization at write time.
+- **Avatar File is state-local, not serialized.** `avatarFiles` lives outside the `settings` object because `FileList` isn't JSON-serializable and the JSON preview would break. The file-info panel (`{#if avatar}`) is derived from `avatarFiles[0]`.
+- **Part 1 + L05/L06 reinforcement:** `$state` × 6, `$derived` × 5, `$inspect` × 1, `{#each}` × 2 keyed, `{#if}` × 1, `<svelte:window>` × 1, `onclick` + `onkeydown` as expected. Only `$effect` is absent — no natural fit in a live-binding settings page, and per the compounding rule we don't force it.
+
 ## Batch 1E — Adapter + pinning sweep (2026-04-21)
 | Step | Status | Notes |
 |---|---|---|

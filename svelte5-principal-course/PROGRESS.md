@@ -11,7 +11,7 @@ Check each box when the build is done AND the self-check questions are answered.
 ## Part 2 — Template mastery
 - [x] Lesson 05 — Markup, attributes, events
 - [x] Lesson 06 — Control flow blocks
-- [ ] Lesson 07 — `bind:` directives
+- [x] Lesson 07 — `bind:` directives
 - [ ] Lesson 08 — `class` & `style`
 - [ ] Lesson 09 — Scoped CSS + tokens
 - [ ] Lesson 10 — Transitions
