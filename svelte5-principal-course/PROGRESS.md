@@ -18,10 +18,10 @@ Check each box when the build is done AND the self-check questions are answered.
 
 ## Part 3 — Components and composition
 - [x] Lesson 11 — `$props`
-- [ ] Lesson 12 — `$props.id()`
-- [ ] Lesson 13 — `$bindable`
-- [ ] Lesson 14 — Snippets
-- [ ] Lesson 15 — Slots → snippets migration
+- [x] Lesson 12 — `$props.id()`
+- [x] Lesson 13 — `$bindable`
+- [x] Lesson 14 — Snippets
+- [x] Lesson 15 — Slots → snippets migration
 
 ## Part 4 — State beyond one component
 - [ ] Lesson 16 — `.svelte.js` / `.svelte.ts` modules

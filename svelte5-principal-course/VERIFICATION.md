@@ -176,3 +176,53 @@ Legend:
 | Reference | ✅ | `InOutSeparate`, `CrossfadeHelper` (tasks list with shared-element transitions), `AnimateFlipReorder` (keyed `{#each}` + `animate:flip`), `ReducedMotion`. |
 | Checks | ✅ | Both packages 287 files, 0 err / 0 warn. |
 | Decisions | `{#key}` + `in:`/`out:` preferred over `crossfade` helper for the carousel (simpler; crossfade is for shared-element pairs). `Tween` used for the progress bar — declarative fraction, no rAF plumbing. Hover-pause uses `onmouseenter`/`onmouseleave` on the stage `<div>` with `role="region"` + `aria-label` to pass a11y. |
+
+## Batch 3A — Lesson 11: `$props` (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Chart library). 5 `$lib/` components — `Card`, `Sparkline`, `BarChart`, `Metric`, `Legend` — composed by a dashboard `+page.svelte` with 6 Cards + Refresh button. **Start of Part 3 (Components and composition).** |
+| README | ✅ | Typed `Props` interface shape, rename-`class` convention, rest-spread forwarding, mutation rules, generics, common-mistakes, PE lens, 3 self-check questions. |
+| Starter | ✅ | Components ship with `Props` interface + destructure intact (compile requires it). Each has `// Lesson 11 build:` block documenting the pattern so the student traces the shape. |
+| Solution | ✅ | Dashboard with 3 sparklines, 1 bar chart, 2 metrics, 1 legend. Typed exports (`BarDatum`, `LegendItem`). `{#key refreshCount}` + `in:fade` animate data change. |
+| Reference | ✅ | `RestSpreadForward`, `GenericList` (with `generics="T"`), `MutationWarning`. |
+| Checks | ✅ | Both packages 292 files, 0 err / 0 warn. |
+| Decisions | Starter ships the destructure done because incomplete `$props()` breaks compilation. Pedagogy moves to the README + live composition on the dashboard page. |
+
+## Batch 3B — Lesson 12: `$props.id()` (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Nested accordion). `AccordionItem` under `$lib/` + dashboard page with 3 outer sections, each containing 3 FAQ sub-items (12 total instances → 24 unique IDs). |
+| Starter | ✅ | Ships markup + state. Stubs: the `$props.id()` call and the 4 `aria-*` / `id` wiring points. |
+| Solution | ✅ | `AccordionItem` with `$props.id()` generating `${uid}-trigger` + `${uid}-panel`, wired to `aria-controls`, `aria-labelledby`, `aria-expanded`. `transition:slide` on panel. |
+| Reference | ✅ | `FormLabelling.svelte` — same rune for `<label for>`/`<input id>`. |
+| Checks | ✅ | Both packages 288 files, 0 err / 0 warn. |
+| Decisions | `svelte-ignore state_referenced_locally` for the `isOpen = $state(open)` pattern — `open` is intentionally an initial value only. The two-way-sync version comes in Lesson 13 with `$bindable`. |
+
+## Batch 3C — Lesson 13: `$bindable` (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Multi-step signup wizard). `Stepper` component with `step = $bindable(0)`; parent owns `let step = $state(0)` and uses `<Stepper bind:step />`. |
+| Starter | ✅ | Stepper ships with `$bindable` already applied (compile fails without it). Stub: `<Stepper bind:step ... />` in parent. |
+| Solution | ✅ | Wizard with 4 steps (Email / Password / Profile / Summary), fade between steps, per-step validation gating Next. |
+| Reference | ✅ | `BindableWithFallback.svelte` — the optional-bind fallback shape. |
+| Checks | ✅ | Both packages 288 files, 0 err / 0 warn. |
+
+## Batch 3D — Lesson 14: Snippets (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Data table). Generic `<Table<T>>` component takes `data`, `columns`, `row` snippet, optional `header` and `empty` snippets. |
+| Starter | ✅ | Ships the implementation; documented via comment block in Props interface. |
+| Solution | ✅ | Users table with badge, usage-bar, empty-state toggle. |
+| Reference | ✅ | `ChildrenVsNamed.svelte` — mixing implicit `children` with named header/footer. |
+| Checks | ✅ | Both packages 288 files, 0 err / 0 warn. |
+
+## Batch 3E — Lesson 15: Slots → snippets migration (2026-04-21)
+| Step | Status | Notes |
+|---|---|---|
+| Format | ✅ | One-real-project (Notice migration). `NoticeLegacy.svelte` with `<svelte:options runes={false}>` + Svelte 4 slots, alongside `NoticeSnippets.svelte` with runes + `Snippet<[{ close }]>`. Page renders both side-by-side. |
+| Starter | ✅ | Legacy component + page shipped; `NoticeSnippets.svelte` is the migration target (ships complete as a worked example since it has to compile). |
+| Solution | ✅ | Both components render identical output. Typed slot args via `SlotArgs` interface. |
+| Checks | ✅ | Both packages 289 files, 0 err / 0 warn. |
+| Decisions | `<svelte:fragment slot="…" let:close>` in the page remains legacy syntax (consuming a legacy child). `onclick` replaces `on:click` inside runes-mode parents even when passing into a legacy child. |
+
+**Part 3 (Components and composition) complete.** Lessons 11–15 green. Next: Part 4 — State beyond one component (L16–18).

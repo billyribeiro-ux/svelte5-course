@@ -1,0 +1,9 @@
+@import '@course/styles/index.css';
+
+@layer base {
+	main {
+		max-inline-size: var(--container-md);
+		margin-inline: auto;
+		padding: var(--space-xl) var(--space-lg);
+	}
+}

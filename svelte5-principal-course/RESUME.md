@@ -1,6 +1,6 @@
 # Resume notes — Svelte 5 Principal Engineer course
 
-**Paused:** 2026-04-21, after Lesson 11 went green. **Parts 1 + 2 DONE, Part 3 started (L11 of 15).** Next work starts at Lesson 12 — Accordion for `$props.id()`.
+**Paused:** 2026-04-21, after Lesson 15 went green. **Parts 1 + 2 + 3 DONE (L01–L15 of 34).** Next work starts at Lesson 16 — `.svelte.js` / `.svelte.ts` modules (cross-route cart), **start of Part 4 (State beyond one component).**
 
 > Read this file top to bottom before doing anything. It captures what's built, what's verified, what the rules are, and what's next.
 
@@ -23,6 +23,10 @@
 | 09 | Scoped CSS + tokens | one-real-project (Component gallery — multi-component) | ✅ Green — 290 files / 0 err / 0 warn on starter + solution |
 | 10 | Transitions | one-real-project (Image carousel) | ✅ Green — 287 files / 0 err / 0 warn on starter + solution |
 | 11 | `$props` | one-real-project (Chart library — 5 components + dashboard) | ✅ Green — 292 files / 0 err / 0 warn on starter + solution |
+| 12 | `$props.id()` | one-real-project (Nested accordion) | ✅ Green — 288 files / 0 err / 0 warn on starter + solution |
+| 13 | `$bindable` | one-real-project (Stepper / 4-step wizard) | ✅ Green — 288 files / 0 err / 0 warn on starter + solution |
+| 14 | Snippets (as props) | one-real-project (Typed data table) | ✅ Green — 288 files / 0 err / 0 warn on starter + solution |
+| 15 | Slots → snippets migration | one-real-project (Notice component migration) | ✅ Green — 289 files / 0 err / 0 warn on starter + solution |
 
 Billy's explicit instruction that anchors this: **"Keep the lessons done as is and from now on do it the way i said."** Then later: **"as a matter of fact finish lesson 3 and 4 so we start fresh 5 onwards"**. So Lessons 01–04 stay in the legacy 4-challenge format. Lesson 05 onward uses the new one-real-project format (see §4).
 
@@ -57,10 +61,14 @@ Billy's explicit instruction that anchors this: **"Keep the lessons done as is a
 ├── lesson-08-class-style/            ✅ DONE — one-real-project format: Theme customizer (OKLCH sliders, mode/radius/scale, 4 presets, CSS export copy, live 6-component preview)
 ├── lesson-09-scoped-css/             ✅ DONE — one-real-project format: Component gallery (multi-component: Buttons/Cards/Forms, `:global()` prose, dark mode via tokens, density multiplier)
 ├── lesson-10-transitions/            ✅ DONE — one-real-project format: Image carousel (5 slides, crossfade, `in:fly` caption, dismissable hint, autoplay Tween bar, keyboard, prefersReducedMotion)
-└── lesson-11-props/                  ✅ DONE — one-real-project format: Chart library (Card + Sparkline + BarChart + Metric + Legend, typed Props interfaces, dashboard composition)
+├── lesson-11-props/                  ✅ DONE — one-real-project format: Chart library (Card + Sparkline + BarChart + Metric + Legend, typed Props interfaces, dashboard composition)
+├── lesson-12-props-id/               ✅ DONE — one-real-project format: Nested accordion (12 instances → 24 unique ARIA IDs via `$props.id()`)
+├── lesson-13-bindable/               ✅ DONE — one-real-project format: 4-step signup wizard; parent owns step, Stepper mutates via `$bindable`
+├── lesson-14-snippets/               ✅ DONE — one-real-project format: Generic typed `<Table<T>>` with per-column snippet props (row, header, empty)
+└── lesson-15-slots-snippets/         ✅ DONE — one-real-project format: `<Notice>` migration — legacy slots (`runes={false}`) → snippets, side-by-side on the page
 ```
 
-Lesson directories 12 through 34 do **not** exist yet.
+Lesson directories 16 through 34 do **not** exist yet.
 
 ### Verified green (via `pnpm --filter ... check`)
 
@@ -88,6 +96,14 @@ Lesson directories 12 through 34 do **not** exist yet.
 | `@course/lesson-10-solution` | 0 err / 0 warn | 287 |
 | `@course/lesson-11-starter` | 0 err / 0 warn | 292 |
 | `@course/lesson-11-solution` | 0 err / 0 warn | 292 |
+| `@course/lesson-12-starter` | 0 err / 0 warn | 288 |
+| `@course/lesson-12-solution` | 0 err / 0 warn | 288 |
+| `@course/lesson-13-starter` | 0 err / 0 warn | 288 |
+| `@course/lesson-13-solution` | 0 err / 0 warn | 288 |
+| `@course/lesson-14-starter` | 0 err / 0 warn | 288 |
+| `@course/lesson-14-solution` | 0 err / 0 warn | 288 |
+| `@course/lesson-15-starter` | 0 err / 0 warn | 289 |
+| `@course/lesson-15-solution` | 0 err / 0 warn | 289 |
 
 _File counts re-measured 2026-04-21 after the adapter-auto → adapter-vercel swap (Batch 1E). Lesson 01 is at 297, Lesson 02 at 295, because Lesson 01 ships extra `$lib` stubs._
 
@@ -112,6 +128,8 @@ pnpm -r --parallel run check
 #8 [completed] Lesson 07 — bind: directives (Settings editor)
 #9 [completed] Lesson 08 — class:/style: (Theme customizer)
 #10 [completed] Lesson 09 — Scoped CSS + tokens (Component gallery, multi-component)
+#11 [completed] Lesson 10 — Transitions (Image carousel)
+#12 [completed] Lesson 11 — $props (Chart library)
 #11 [completed] Lesson 10 — Transitions (Image carousel)
 ```
 
