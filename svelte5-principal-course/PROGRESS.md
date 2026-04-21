@@ -3,8 +3,8 @@
 Check each box when the build is done AND the self-check questions are answered.
 
 ## Part 1 — Reactivity fundamentals
-- [ ] Lesson 01 — `$state`
-- [ ] Lesson 02 — `$derived`
+- [x] Lesson 01 — `$state`
+- [x] Lesson 02 — `$derived`
 - [ ] Lesson 03 — `$effect`
 - [ ] Lesson 04 — `$inspect` & `$inspect.trace`
 
