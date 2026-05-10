@@ -272,9 +272,21 @@ No. Async reads are not tracked. The `setTimeout` callback runs *after* the sync
 Nothing breaks *immediately*. The interval works, the UI updates. The break arrives when `ms` changes (or the component unmounts): the old interval is never cleared, so now two (or ten) intervals are all ticking. You'll see the counter accelerate on every "slower"/"faster" click. Fix: `return () => clearInterval(id)`.
 </details>
 
+## Going further
+
+After the four challenges (canvas, timer, autoscroll, persist) feel comfortable, open [`deep-dive/`](./deep-dive/). Three short reference files extend the lesson:
+
+- **`EffectRoot.svelte`** — `$effect.root()` for effects that must outlive the component. You get a manual `destroy()` function in return. Real uses: a shared ticker, a focus-trap or shortcut manager, websocket bootstrap. Sparingly — it is the escape hatch from automatic cleanup.
+- **`EffectConditionalDeps.svelte`** — an effect's dependencies are whichever state it actually *read* on its last run, not what its source code mentions. Conditional branches mean the dep set changes between runs. The same idea you saw for `$derived` in Lesson 02 applies here too — proven with a run-counter.
+- **`EffectBatchedRuns.svelte`** — Svelte batches effects in a microtask. Multiple synchronous state changes coalesce into one effect run; the same writes spread across separate `setTimeout` callbacks run the effect once each. Two buttons side by side; click both and watch the counter.
+
+These files all use `$state` (Lesson 01) and `$effect` (Lesson 03). The first introduces the new `$effect.root` sub-rune. The run-counter diagnostic pattern is reused from Lesson 02's deep-dive.
+
 ## Links
 
 - [Svelte docs — `$effect`](https://svelte.dev/docs/svelte/$effect)
+- [Svelte docs — `$effect.root`](https://svelte.dev/docs/svelte/$effect#$effect.root)
+- [Svelte docs — Understanding dependencies](https://svelte.dev/docs/svelte/$effect#Understanding-dependencies)
 - [Svelte docs — When NOT to use `$effect`](https://svelte.dev/docs/svelte/$effect#When-not-to-use-$effect)
 - [`untrack`](https://svelte.dev/docs/svelte/svelte#untrack) for intentional non-tracking reads
 
