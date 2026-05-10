@@ -9,7 +9,7 @@ Check each box when the build is done AND the self-check questions are answered.
 - [x] Lesson 04 — `$inspect` & `$inspect.trace`
 
 ## Part 2 — Template mastery
-- [ ] Lesson 05 — Markup, attributes, events
+- [x] Lesson 05 — Markup, attributes, events
 - [ ] Lesson 06 — Control flow blocks
 - [ ] Lesson 07 — `bind:` directives
 - [ ] Lesson 08 — `class` & `style`

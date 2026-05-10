@@ -83,6 +83,23 @@ Legend:
 | `pnpm install` after swap | ✅ | Clean (+38 packages from adapter-vercel's deps). |
 | `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn. Each jumped from 294 → 295 files (adapter-vercel type defs now in graph). |
 
+## Batch 2A — Lesson 05: Markup, attributes, events (Command Palette) — 2026-05-10
+| Step | Status | Notes |
+|---|---|---|
+| README written (new project-first format per RESUME.md §4) | ✅ | The project + What you learn + Mental model + 5 rules + Worked examples (⌘K, focus effect, keyed each) + Common mistakes + PE lens + Build challenge with success criteria + 3 self-check Q&A + Links. |
+| Starter scaffolded | ✅ | Whole shell (markup, CSS, refs, action functions, existing $effect for index-clamp + scroll-into-view, action stubs for keydown handlers, run(), backdrop click) with seven numbered `// Lesson 05 build:` steps concentrated in `src/routes/+page.svelte`. |
+| Solution built | ✅ | Full Command Palette: ⌘K/Ctrl+K toggle on `<svelte:window>`, Escape to close, focus management $effect, click-outside dismiss, ↑/↓ wrapping nav + Enter to run, recent-first ranking, localStorage persist (mount-only read in `untrack`, write-on-change), `$inspect.trace('ranked')` in the derived. |
+| Reference/ — 3 standalone .svelte files + README index | ✅ | `BooleanAttributes.svelte` (present-or-absent semantics + `... ?? undefined` idiom), `SvelteWindowKeydown.svelte` (key recorder + auto-cleanup), `EventSyntaxMigration.svelte` (Svelte 4 `on:` + modifiers → Svelte 5 `on*` + method calls inside handler body). |
+| Shared `commands.ts` library | ✅ | Plain TS data, no runes; consumed by both starter and solution. |
+| All `.svelte` files passed `mcp__svelte__svelte-autofixer` | ✅ | 8 .svelte files (2 layouts, 2 +page, 3 reference, 1 ts module). All return `issues: []`. Only-suggestions are documented teaching patterns (`bind:this` deferred to L25/26; canvas/timer-style side effects in $effect; `untrack` in $effect for mount-only reads). |
+| Cumulative-syntax rule honoured | ✅ | Solution exercises ALL four Part-1 runes: `$state` (open, query, selectedIndex, recent, 4× DOM refs), `$derived` (filtered + ranked + selectedDescendant), `$effect` (mount-read, write-on-change, focus management, index-clamp, scroll-into-view), `$inspect.trace` (on `ranked` derived). README explicitly names each rune at the call site. |
+| Real svelte-check error caught + fixed during build | ✅ | TS-strict `noUncheckedIndexedAccess` flagged `ranked[selectedIndex].id` re-access in `aria-activedescendant`. Resolved by extracting a `$derived` `selectedDescendant` constant — both starter and solution. |
+| `pnpm install` after scaffold | ✅ | 6 new packages from L05 deps + 2 from solution; lockfile clean. |
+| `pnpm --filter @course/lesson-05-starter check` | ✅ | 288 files, 0 errors, 0 warnings. |
+| `pnpm --filter @course/lesson-05-solution check` | ✅ | 288 files, 0 errors, 0 warnings. |
+| `pnpm -r --parallel run check` (full workspace) | ✅ | All 10 packages 0/0. Counts: L01 297×2, L02 295×2, L03 295×2, L04 295×2, L05 288×2. |
+| PROGRESS.md updated | ✅ | `Lesson 05` ticked in Part 2. |
+
 ## Batch 1G — "Deepen" supplements for Lessons 01–04 (2026-05-10)
 | Step | Status | Notes |
 |---|---|---|
