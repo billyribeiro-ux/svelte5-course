@@ -257,8 +257,19 @@ Two fixes:
 The arrow field is the pattern the official docs recommend for exactly this reason.
 </details>
 
+## Going further
+
+Once the four challenges feel comfortable, open the [`deep-dive/`](./deep-dive/) folder. Three short reference files extend what you just learned without changing the lesson:
+
+- **`SvelteSetAndMap.svelte`** — the trap that catches almost everyone in their first month of Svelte 5: `$state(new Set())` does **not** make a Set reactive. Class instances are not proxified. The fix is `SvelteSet` / `SvelteMap` from `svelte/reactivity`, which are drop-in replacements that *are* reactive. See it fail and succeed side by side.
+- **`StateRunesInClasses.svelte`** — three rules that turn your Todo class into a real building block: opt-in `$state` on the fields you care about; arrow-field methods so `this` survives being passed to an event handler; and *getters* on the class as a way to expose computed views — a pattern that becomes the natural home for `$derived` in Lesson 02.
+- **`module-counter.svelte.ts` + `ModuleStatePatterns.svelte`** — two equally valid ways to share `$state` across files. Pattern A (export an object, mutate its properties) is what `/04-module` uses. Pattern B (export getter/setter functions) keeps the state file-private and lets the value be a primitive. Knowing both lets you pick the right shape for the value you're sharing.
+
+These files only use `$state` — no new runes — so you can absorb them with what Lesson 01 already gave you.
+
 ## Links
 
 - [$state — Svelte docs](https://svelte.dev/docs/svelte/$state)
 - [.svelte.js and .svelte.ts files — Svelte docs](https://svelte.dev/docs/svelte/svelte-js-files)
+- [svelte/reactivity — Svelte docs](https://svelte.dev/docs/svelte/svelte-reactivity)
 - [What are runes? — Svelte docs](https://svelte.dev/docs/svelte/what-are-runes)
