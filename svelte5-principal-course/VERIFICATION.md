@@ -82,3 +82,27 @@ Legend:
 | Confirm every dep at latest as of 2026-04-21 | ✅ | svelte 5.55.4, @sveltejs/kit 2.57.1, vite 8.0.9, vite-plugin-svelte 7.0.0, svelte-check 4.4.6, typescript 6.0.3, @types/node 25.6.0, prettier 3.8.3, prettier-plugin-svelte 3.5.1, pnpm 10.33.0 — nothing needed bumping. |
 | `pnpm install` after swap | ✅ | Clean (+38 packages from adapter-vercel's deps). |
 | `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn. Each jumped from 294 → 295 files (adapter-vercel type defs now in graph). |
+
+## Batch 1F — End-to-end MCP audit of Lessons 01–04 (2026-05-10)
+| Step | Status | Notes |
+|---|---|---|
+| Baseline `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn before audit started. |
+| `mcp__svelte__svelte-autofixer` swept across all 60 source files | ✅ | Every `.svelte` and `.svelte.ts` across `lesson-01..04` × {starter, solution, reference}. |
+| Files reporting `issues: []` (autofixer-clean) | ✅ | **60 / 60.** No file required a code edit. |
+| Files with `suggestions` (non-blocking) | ⚠ documented | All suggestions categorized below. None warrant a change at this stage of the course. |
+| Post-audit `pnpm -r --parallel run check` | ✅ | All 8 packages still 0 err / 0 warn (identical to baseline — no edits were applied). |
+
+### Suggestion categories surfaced by the autofixer (and why each is intentional)
+
+1. **"Calling function X inside $effect — could be $derived"** — surfaced in Lesson 03 canvas/timer/autoscroll/persist + Lesson 04 trace. These are textbook side-effect cases (canvas draw, `setInterval` + cleanup, `localStorage` write, DOM scroll). `$derived` cannot perform side effects. Code stays as-is.
+2. **"Stateful variable assigned inside $effect"** — surfaced in:
+   - `lesson-03-effect/reference/EffectVsDerivedAntipattern.svelte` — the file's whole purpose is to demonstrate the antipattern (comments say "❌ DO NOT DO THIS"). The autofixer correctly flagging it is proof the lesson teaches the correct rule.
+   - `lesson-03-effect/reference/ObjectIdentityTracking.svelte` — `counts.identity += 1` / `counts.property += 1` are run-counters that prove the effect ran. They cannot be `$derived` because the whole point is counting executions.
+   - `lesson-03-effect/solution/04-persist` — `theme = saved` happens inside an `untrack(() => { ... })` block on mount, which is the documented Svelte 5 idiom for "read once from storage without re-firing on every change."
+3. **"`bind:this` could be replaced with an attachment"** — surfaced on every `bind:this` in Lessons 03/04. Attachments (`{@attach}`) are the subject of Lessons 25–26 in the syllabus. Introducing them in Lesson 03 would jump 22 lessons ahead. Migration is staged for those lessons.
+
+### Files audited (60 total)
+- `lesson-01-state` (20): 4 reference + 2 `.svelte.ts` × 2 + 6 routes × 2 = 4 + 4 + 12.
+- `lesson-02-derived` (16): 4 reference + 6 routes × 2.
+- `lesson-03-effect` (16): 4 reference + 6 routes × 2.
+- `lesson-04-inspect` (16): 4 reference + 6 routes × 2.
