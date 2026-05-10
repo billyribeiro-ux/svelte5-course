@@ -221,5 +221,16 @@ Three possibilities. (a) The code is running in production — trace is dev-only
 
 - [Svelte docs — `$inspect`](https://svelte.dev/docs/svelte/$inspect)
 - [Svelte docs — `$inspect.trace`](https://svelte.dev/docs/svelte/$inspect#$inspect.trace(...))
+- [Svelte docs — `{@debug ...}` tag](https://svelte.dev/docs/svelte/@debug)
+
+## Going further
+
+After the four challenges, open [`deep-dive/`](./deep-dive/). Three short reference files extend what you just learned:
+
+- **`InspectVsDebugTag.svelte`** — `$inspect(value)` in script vs `{@debug value}` in markup. The first logs every change; the second pauses execution when DevTools is open. Two tools for two intents: *log* vs *stop*.
+- **`InspectMultipleValues.svelte`** — `$inspect(a, b, c).with((type, a, b, c) => ...)` watches a *group* of values together. When the bug is about a combination (e.g. "only when `mode === 'edit'` AND `dirty`"), one inspect with a custom handler beats three separate ones.
+- **`InspectTraceWithLabel.svelte`** — `$inspect.trace('label')` labels a traced function so a console full of trace groups stays diagnostic instead of becoming noise. This file is also the **Part-1 grand finale**: `$state` + `$derived` + `$effect` + `$inspect.trace` exercised together in one realistic shopping calc.
+
+If you can read the third file fluently, you've earned Part 1.
 
 Next: [Lesson 05 — Markup, attributes, events](../lesson-05-markup/README.md). From Lesson 05 on, each lesson is one real project instead of four mini-challenges.

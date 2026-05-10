@@ -83,6 +83,25 @@ Legend:
 | `pnpm install` after swap | ✅ | Clean (+38 packages from adapter-vercel's deps). |
 | `pnpm -r --parallel run check` | ✅ | All 8 packages 0 err / 0 warn. Each jumped from 294 → 295 files (adapter-vercel type defs now in graph). |
 
+## Batch 1G — "Deepen" supplements for Lessons 01–04 (2026-05-10)
+| Step | Status | Notes |
+|---|---|---|
+| Lesson 01 deep-dive — 3 reference files + README index + Going-further README section | ✅ | `SvelteSetAndMap` (svelte/reactivity), `StateRunesInClasses` (private fields, arrow methods, getters as computed views), `module-counter.svelte.ts` + `ModuleStatePatterns` (object-mutate vs getter-functions). Commit `6b3a7a3`. |
+| Lesson 02 deep-dive — 3 reference files + README index + Going-further README section | ✅ | `DerivedLaziness` (pull-not-push proved with run-counter), `DerivedOverrideOptimistic` (5.25+ reassign-derived with rollback), `DerivedReturningObjects` (fresh-object equality footgun, primitive vs object side-by-side). Commit `1c43a76`. |
+| Lesson 03 deep-dive — 3 reference files + README index + Going-further README section | ✅ | `EffectRoot` (manual lifecycle), `EffectConditionalDeps` (re-track on every run), `EffectBatchedRuns` (sync writes coalesce into one effect run). Commit `d894dcb`. |
+| Lesson 04 deep-dive — 3 reference files + README index + Going-further README section | ✅ | `InspectVsDebugTag` (script-inspect vs markup-debug), `InspectMultipleValues` (correlated debug via `.with`), `InspectTraceWithLabel` (Part-1 grand finale: $state + $derived + $effect + $inspect.trace together). |
+| All deep-dive files passed `mcp__svelte__svelte-autofixer` | ✅ | 13 new files (12 .svelte + 1 .svelte.ts) — all `issues: []`. Suggestions match the documented patterns in Batch 1F (run-counters-in-$effect for teaching, attachment-not-yet-introduced for `bind:this`). |
+| Post-deep-dive `pnpm -r --parallel run check` | ✅ | All 8 packages still 0 err / 0 warn. Deep-dive files live outside `src/`, so the build is unaffected by design. |
+| Existing pages, route stubs, solutions, and original reference files | ✅ unchanged | RESUME.md lock on Lessons 01–04 is honoured. The deep-dive is purely additive. |
+
+### Cumulative-syntax rule baked into the deep-dives
+
+Each deep-dive file declares which runes it uses. The thread is enforced:
+- L01 deep-dives use only `$state` (and one introduces `SvelteSet` from `svelte/reactivity`).
+- L02 deep-dives use `$state` + `$derived`. The third file forward-references `$effect` purely as an observation tool (a run-counter), with a comment promising to switch to `$inspect` after Lesson 04.
+- L03 deep-dives use `$state` + `$effect`. The first file introduces `$effect.root`.
+- L04 deep-dives layer everything: the final file (`InspectTraceWithLabel.svelte`) exercises all four Part-1 runes in one realistic shopping calc — the "grand finale."
+
 ## Batch 1F — End-to-end MCP audit of Lessons 01–04 (2026-05-10)
 | Step | Status | Notes |
 |---|---|---|
