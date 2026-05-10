@@ -265,10 +265,21 @@ It reinvents `$derived` the hard way. You lose push-pull laziness, you open the 
 Twice, if `threshold` is 10: once when `isOver` flips from `false` → `true` at `count = 11`. (Once for the initial render, once at the flip.) Svelte short-circuits identical values — `false === false` skips the update. This is the referential-equality short-circuit.
 </details>
 
+## Going further
+
+After all four challenges are working, open the [`deep-dive/`](./deep-dive/) folder. Three short reference files extend what you just built:
+
+- **`DerivedLaziness.svelte`** — the single most under-appreciated property of `$derived`: it is **lazy**. When a dependency changes, the derived marks itself dirty and waits. The body only runs when somebody *reads* the value. A run-counter inside a `$derived.by` body proves this — tick a counter while the derived is offscreen, and the runs count stays put.
+- **`DerivedOverrideOptimistic.svelte`** — since Svelte 5.25 you can reassign a `let`-declared `$derived` for temporary overrides. That's the natural shape for optimistic UI: the same variable holds the server truth *and* the optimistic value. When the server confirms, the derived snaps back to truth automatically. On failure, you assign the old value back. Cleaner than maintaining a separate `$state` mirror.
+- **`DerivedReturningObjects.svelte`** — the performance footgun: returning a fresh `{...}` from a derived breaks Svelte's referential-equality short-circuit, so every downstream `$effect` and template node re-runs even when the contents are identical. Demonstrated with two parallel deriveds (primitive vs object) and a run-counter you can compare.
+
+These files reuse `$state` (Lesson 01) and `$derived` (Lesson 02). The third file pulls forward `$effect` only as a measurement instrument.
+
 ## Links
 
 - [Svelte docs — `$derived`](https://svelte.dev/docs/svelte/$derived)
 - [Svelte docs — `$derived.by` section](https://svelte.dev/docs/svelte/$derived#$derived.by)
 - [Svelte docs — Push-pull reactivity](https://svelte.dev/docs/svelte/$derived#Update-propagation)
+- [Svelte docs — Overriding derived values](https://svelte.dev/docs/svelte/$derived#Overriding-derived-values)
 
 Next: [Lesson 03 — `$effect`](../lesson-03-effect/README.md). Effects are how you *do* things when state changes. `$derived` is for computing, `$effect` is for doing.
